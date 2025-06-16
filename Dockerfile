@@ -1,47 +1,52 @@
 FROM php:8.3-fpm-bullseye
 
-RUN  apt-get update && apt-get install -y \
-     curl \
-     libpng-dev \
-     libonig-dev \
-     libxml2-dev \
-     libjpeg-dev \
-     libfreetype6-dev \
-     libjpeg62-turbo-dev \
-     libmcrypt-dev \
-     libgd-dev \
-     jpegoptim optipng pngquant gifsicle \
-     zip \
-     unzip \
-     nano \
-     git-all \
-     libzip-dev \
-     supervisor \ 
-     poppler-utils
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN  apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libzip-dev \
+    libgd-dev \
+    jpegoptim \
+    optipng \
+    pngquant \
+    gifsicle \
+    zip \
+    unzip \
+    nano \
+    git \
+    supervisor \
+    poppler-utils && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip opcache
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) pdo_mysql mbstring exif pcntl bcmath gd zip opcache
 
-ENV  COMPOSER_ALLOW_SUPERUSER=1
 
-RUN  curl -sS https://getcomposer.org/installer​ | php -- \
-     --install-dir=/usr/local/bin --filename=composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY ./composer.* /var/www/html
 
 WORKDIR /var/www/html
 
-COPY . /var/www/html
+COPY composer.json composer.lock ./
 
-RUN  chown -R www-data:www-data *
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN  composer install --ignore-platform-reqs --no-interaction
+COPY . .
 
-# RUN  php artisan optimize:clear && \
-#      php artisan cache:clear && \
-#      php artisan config:clear && \
-#      php artisan config:cache
+
+RUN chown -R www-data:www-data .
+
+
+EXPOSE 9000
+
+CMD ["php-fpm"]
