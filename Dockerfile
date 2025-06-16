@@ -1,4 +1,4 @@
-FROM php:8.1.23-fpm
+FROM php:8.3-fpm-bullseye
 
 RUN  apt-get update && apt-get install -y \
      curl \
@@ -17,18 +17,7 @@ RUN  apt-get update && apt-get install -y \
      git-all \
      libzip-dev \
      supervisor \ 
-     poppler-utils \
-     python3 \
-     python3-venv \
-     python3-pip
-
-ENV  VIRTUAL_ENV=/opt/venv
-
-RUN  python3 -m venv $VIRTUAL_ENV
-
-ENV  PATH="$VIRTUAL_ENV/bin:$PATH"
-
-RUN  pip install pypsexec
+     poppler-utils
 
 RUN  apt-get clean && rm -rf /var/lib/apt/lists/*
 
