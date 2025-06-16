@@ -4,3 +4,10 @@
     file_server
     php_fastcgi app:9000
 }
+
+coe-result.myunical.online,www.coe-result.myunical.online {
+    root * /var/www/html/public
+    encode zstd gzip
+    file_server
+    php_fastcgi app:9000
+}
