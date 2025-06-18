@@ -179,6 +179,6 @@ class ResultController extends Controller
 
         session()->forget('upload-data');
 
-        return back()->with('success', 'Results uploaded successfully!');
+        return redirect('/uploads');
     }
 }
