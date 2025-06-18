@@ -33,7 +33,7 @@
     <header>
         <div class="container header-container" style="display: flex; justify-content: center; align-items: center; height: 100px;">
             <div class="logo" style="display: flex; align-items: center;">
-                <span>Results Upload</span>
+                <a href="/uploads" style="color: white">Results Upload</a>
             </div>
         </div>
     </header>
@@ -44,6 +44,13 @@
             <strong>Results successfully uploaded</strong>
         </div>
     @endif
+
+    @if ( session()->has('upload-errors') )
+        <div id="alert" class="alert alert-danger alert-dismissible text-center" role="alert" style="border-radius: 0">
+            <button onclick="document.getElementById('alert').style.display = 'none'" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <strong>{{ session('upload-errors') }}</strong>
+        </div>
+    @endif
     
     <div x-data="result" class="mb-5">
         <div class="container boxx">
@@ -52,7 +59,7 @@
                    <p class="text-primary" style="font-size: 1.8rem; font-weight: 800; padding-top: 8px">Upload Result</p>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('results.upload') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('preview.upload') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="assessment_category" class="form-label" style="font-size: 1rem; font-weight: 600">Select Assessment Type</label>
@@ -122,7 +129,7 @@
                             <select class="form-control" x-on:change="selectSession" name="level" id="level">
                                 <option value="">Select Level</option>
                                 @foreach (\App\Models\Level::get() as $level)
-                                    <option @selected( old('level') == $level->level )  value="{{ $level->level }}">{{ $level->level }}</option>
+                                    <option @selected( old('level') == $level->id )  value="{{ $level->id }}">{{ $level->level }}</option>
                                @endforeach
                             </select>
                             @error('level')
@@ -147,6 +154,9 @@
                         <div class="mb-3">
                             <label for="file" class="form-label" style="font-size: 1rem; font-weight: 600">Select Upload File</label>
                             <input type="file" class="form-control" id="file" name="file" required>
+                            @error('file')
+                                <div class="mt-2" style="font-size: 12px; color: red">{{ $message }}</div>
+                            @enderror
                         </div>
 
                        <div>

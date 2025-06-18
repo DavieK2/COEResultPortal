@@ -19,7 +19,7 @@ class AuthController extends Controller
             ]);
         }
 
-        return redirect()->intended('/upload-result');
+        return redirect()->intended('/uploads');
 
     }
 }

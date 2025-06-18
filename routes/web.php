@@ -17,8 +17,13 @@ Route::get('/get-departments/{faculty_id}', function($faculty_id){
 })->name('get-departments');
 
 
-Route::get('/upload-result', fn() => view('lecturers.results.upload') )->middleware('auth');
-Route::post('/upload-result', [ResultController::class, 'uploadResult'])->name('results.upload')->middleware('auth');
+Route::get('/uploads', [ResultController::class, 'index']  )->name('upload.index')->middleware('auth');
+Route::get('/upload-result', fn() => view('lecturers.results.upload') )->name('upload')->middleware('auth');
+Route::post('/upload-result', [ResultController::class, 'previewUpload'])->name('preview.upload')->middleware('auth');
+Route::post('/complete-upload', [ResultController::class, 'uploadResult'])->name('results.upload')->middleware('auth');
 
 
 
+
+
+Route::get('/admin/results', fn() => view('admin.results.index') );
