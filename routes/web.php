@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Officials\ResultController as OfficialsResultController;
 use App\Http\Controllers\ResultController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,5 @@ Route::post('/complete-upload', [ResultController::class, 'uploadResult'])->name
 
 
 
-Route::get('/admin/results', fn() => view('admin.results.index') );
+Route::get('/admin/results', [OfficialsResultController::class, 'index'] )->name('officials.results.index')->middleware('auth');
+Route::get('/admin/results/{id}', [OfficialsResultController::class, 'show'] )->name('officials.results.show')->middleware('auth');

@@ -19,7 +19,20 @@ class AuthController extends Controller
             ]);
         }
 
-        return redirect()->intended('/uploads');
+        
+        if( auth()->user()->email === 'lecturer@coe.com' ) {
+
+            return redirect('/uploads');
+        }
+
+
+
+        if( auth()->user()->email === 'hod@coe.com' ) {
+            
+            return redirect('/admin/results');
+        }
+
+      
 
     }
 }

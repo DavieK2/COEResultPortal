@@ -81,7 +81,7 @@
             <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">home</p>
 
             <!-- link -->
-            <a href="#"
+            <a href="/admin/results"
                 class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 tw:cursor-pointer">
                 <i class="fad fa-chart-pie text-xs mr-2"></i>
                 Results
@@ -111,45 +111,34 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <div class="flex flex-row justify-between items-center">
-                                <h1 class="font-extrabold text-lg">Uploaded Results</h1>
+                            <div class="flex tw:flex-col tw:space-y-3">
+                                <div class="font-bold text-sm">Session: {{ $result_data->session  }}</div>
+                                <div class="font-bold text-sm">Semester: {{ $result_data->semester  }}</div>
+                                <div class="font-bold text-sm">Faculty: {{ $result_data->faculty_name  }}</div>
+                                <div class="font-bold text-sm">Department: {{ $result_data->department_name  }}</div>
+                                <div class="font-bold text-sm">Level: {{ $result_data->level  }}</div>
+                                <div class="font-bold text-sm">Course: {{ $result_data->course_name  }}</div>
                             </div>
 
-                            <table class="table-auto w-full mt-5 text-right">
+                            <table class="table-auto w-full tw:mt-10 text-right">
 
                                 <thead>
                                     <tr class="">
                                         <td class="px-4 py-4 font-extrabold text-sm text-left tw:bg-gray-200">S/N</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Course</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Session</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Semester</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Department</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Faculty</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Level</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Uploaded By</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Upload Date</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Action</td>
+                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Student Name</td>
+                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Mat No</td>
+                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Score</td>
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-                                   @forelse ($uploads as $index => $upload)
+                                   @forelse ($results as $index => $upload)
                                         <tr class="">
                                             <td class="px-4 py-4  text-sm text-gray-600 flex flex-row items-center text-left">{{ $index + 1 }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->course_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->session }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->semester }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->department_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->faculty_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->level }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->submitted_by }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->submitted_at }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">
-                                                <a href="{{ route('officials.results.show', ['id' => $upload->result_id]) }}" class="tw:text-blue-500 tw:hover:text-blue-700">
-                                                    <i class="fad fa-eye"></i> View
-                                                </a>
-                                            </td>
+                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->student_name }}</td>
+                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->mat_no }}</td>
+                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->score }}</td>
                                         </tr>
                                    @empty
                                      
