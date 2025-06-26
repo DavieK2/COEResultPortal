@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->string('course_code');
+            $table->integer('faculty_id');
+            $table->integer('department_id');
             $table->timestamps();
         });
     }

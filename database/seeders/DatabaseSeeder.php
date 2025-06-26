@@ -35,10 +35,15 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        Course::create([
-            'course_name' => 'Test Course',
-            'course_code' => 'TC101',
-        ]);
+        // Course::create([
+        //     'course_name' => 'Test Course 1',
+        //     'course_code' => 'TC101',
+        // ]);
+
+        // Course::create([
+        //     'course_name' => 'Test Course 2',
+        //     'course_code' => 'TC102',
+        // ]);
 
         AcademicSession::create([
             'session' => '2024/2025'
@@ -105,6 +110,293 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });    
+
+
+
+  
+
+        $courses = [
+            [
+                "course_name" => "Evaluation of Community Projects",
+                "course_code" => "EDA 421",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Integrated Community Development",
+                "course_code" => "EDA 423",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Programme Design, Planning and Evaluation in Adult Education",
+                "course_code" => "EDA 403",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Personnel Management",
+                "course_code" => "EDA 472",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Manpower Planning and Education Planning System",
+                "course_code" => "EDA 473",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Industrial Communication",
+                "course_code" => "EDA 471",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Sociology of development",
+                "course_code" => "EDA 422",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Administration of Adult Education",
+                "course_code" => "EDA 405",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Principles and Method of Functional Literacy",
+                "course_code" => "EDA 402",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "group work in social work education",
+                "course_code" => "EDA 184",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Cooperative Education in Nigeria",
+                "course_code" => "EDA 444",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Due Processing in Cooperative",
+                "course_code" => "EDA 446",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Modern Cooperative Management Techniques",
+                "course_code" => "EDA 445",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Introduction to cooperative Education",
+                "course_code" => "EDA 142",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Traders cooperative",
+                "course_code" => "EDA 144",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Environmental Impact Assessment on Adult Learning",
+                "course_code" => "EDA 491",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Contemporary Issues and Concerns in Environmental Adult Education",
+                "course_code" => "EDA 492",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Methods materials in Environmental Adult Education",
+                "course_code" => "EDA 392",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Traditional farming and environment",
+                "course_code" => "EDA 196",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Principles of functional principles & methods of teaching Adult",
+                "course_code" => "EDA 402",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "History of vocational Education",
+                "course_code" => "EDA 116",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Literacy,vocational development and situational analysis",
+                "course_code" => "EDA 114",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Community Organisation and Social Work Project",
+                "course_code" => "EDA 486",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Mobilization and Village Adoption Scheme",
+                "course_code" => "EDA 442",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Trafficking in Human Beings and Social Work Education",
+                "course_code" => "EDA 482",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Population Education",
+                "course_code" => "EDA 324",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Sociology of Development",
+                "course_code" => "EDA 402",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Trends and Issues Cooperative Operations in a Changing",
+                "course_code" => "EDA 346",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Community Education",
+                "course_code" => "EDA 322",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Mobilisation and Village Adoption Scheme",
+                "course_code" => "EDA 442",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Fund Raising, Loan Application and Administration",
+                "course_code" => "EDA 441",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Adoption Strategies in Rural Communities",
+                "course_code" => "EDA 126",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Communication Mass Media and Distance Education",
+                "course_code" => "EDA 306",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Cases in social work Education",
+                "course_code" => "EDA 182",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Ecosystem and community Development",
+                "course_code" => "EDA 221",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Outstanding women",
+                "course_code" => "EDA 364",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Social Case Work and Community Service",
+                "course_code" => "EDA 382",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Media Ethics",
+                "course_code" => "EDA 406",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Career women Education",
+                "course_code" => "EDA 162",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Living resources conservation",
+                "course_code" => "EDA 194",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Personnel management",
+                "course_code" => "EDA 472",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Practice in extension Education",
+                "course_code" => "EDA 132",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "United nations organization education policies",
+                "course_code" => "EDA 416",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Public relations principles",
+                "course_code" => "EDA 1106",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Women and the Living Environment",
+                "course_code" => "EDA 491",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ],
+            [
+                "course_name" => "Principles and practices of environmental Adult Education",
+                "course_code" => "EDA 492",
+                "faculty_id" => 1,
+                "department_id" => 9
+            ]
+        ];
+
+
+        collect( $courses )->each( fn($course) => Course::create( $course ) );
+
 
 
     }

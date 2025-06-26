@@ -1,182 +1,139 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.app')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/dashboard/css/style.css') }}">
+    <div class="card">
+        <div class="card-body tw:w-full tw:overflow-x-auto">
+            <div class="tw:shadow-md tw:sm:rounded-lg tw:mt-5 tw:font-sans tw:overflow-x-auto">
+                <div class="tw:flex tw:gap-4 tw:w-full">
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Session</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="session">
+                            @foreach (\App\Models\AcademicSession::get() as $session)
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <title>COE Result Portal</title>
-</head>
-
-<body class="bg-gray-100">
-
-
-    <!-- start navbar -->
-    <div class="fixed tw:h-20 w-full top-0 z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
-
-        <!-- logo -->
-        <div class="flex-none w-56 flex flex-row items-center">
-            {{-- <img src="img/logo.png" class="w-10 flex-none"> --}}
-            <strong class="capitalize ml-1 flex-1">Result Portal</strong>
-
-            <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
-                <i class="fad fa-list-ul"></i>
-            </button>
-        </div>
-        <!-- end logo -->
-
-        <!-- navbar content toggle -->
-        <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
-            <i class="fad fa-chevron-double-down"></i>
-        </button>
-       
-        <div id="navbar" class="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap tw:justify-end items-center md:flex-col md:items-center">
-            <div class="flex flex-row-reverse items-center">
-                <div class="dropdown relative md:static">
-
-                    <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
-                       
-                        <div class="ml-2 capitalize flex ">
-                            <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">HOD</h1>
-                            <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
-                        </div>
-                    </button>
-
-                    <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
-
-                    <div class="text-gray-500 menu hidden md:mt-10 md:w-full rounded bg-white shadow-md absolute z-20 right-0 w-40 mt-5 py-2 animated faster">
-
-                        <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out"
-                            href="#">
-                            <i class="fad fa-user-times text-xs mr-1"></i>
-                            log out
-                        </a>
+                                <option value="{{ $session->id }}">{{ $session->session }}</option>
+                                
+                            @endforeach
+                        </select>
                     </div>
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Semester</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="semester">
+                            @foreach (\App\Models\Semester::get() as $semester)
+
+                                <option value="{{ $semester->id }}">{{ $semester->semester }}</option>
+                                
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Level</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="level">
+                            @foreach (\App\Models\Level::get() as $level)
+
+                                <option value="{{ $level->id }}">{{ $level->level }}</option>
+                                
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                 <div class="tw:flex tw:gap-4 tw:w-full mt-5">
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Faculty</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="faculty">
+                            @foreach (\App\Models\Faculty::get() as $faculty)
+
+                                <option value="{{ $faculty->id }}">{{ $faculty->faculty_name }}</option>
+                                
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Department</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="department">
+                            
+                        </select>
+                    </div>
+                    <div class="tw:flex tw:flex-col tw:w-full">
+                        <label class="tw:mb-3 tw:font-semibold" for="">Select Course</label>
+                        <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="course">
+                            @foreach (\App\Models\Course::get() as $course)
+
+                                <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                                
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tw:flex tw:gap-4 tw:w-full tw:mt-10">
+                    <button type="submit" onclick="event.preventDefault(); getResults()" style="background: black; color: white; padding-block: 0.75rem; padding-inline: 1rem" class="tw:bg-gray-900 tw:text-white tw:text-sm tw:font-semibold tw:px-6 tw:py-3 tw:rounded">Search</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- end navbar -->
+    
 
-    <div id="sideBar"
-        class="tw:md:fixed bg-white border-r border-gray-300 p-6 tw:w-40 z-30 tw:bottom-0 tw:h-[calc(100vh-5rem)] shadow-xl animated faster tw:overflow-y-auto">
-
-
-        <!-- sidebar content -->
-        <div class="flex flex-col">
-
-            <!-- sidebar toggle -->
-            <div class="text-right hidden md:block mb-4">
-                <button id="sideBarHideBtn">
-                    <i class="fad fa-times-circle"></i>
-                </button>
-            </div>
-            <!-- end sidebar toggle -->
-
-            <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">home</p>
-
-            <!-- link -->
-            <a href="#"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500 tw:cursor-pointer">
-                <i class="fad fa-chart-pie text-xs mr-2"></i>
-                Results
-            </a>
-           
-
-            {{-- <a href="./index-1.html"
-                class="mb-3 capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
-                <i class="fad fa-shopping-cart text-xs mr-2"></i>
-                ecommerce dashboard
-            </a> --}}
-           
-
-        </div>
+    <div class="tw:w-full" id="results">
 
     </div>
 
 
-    <!-- strat wrapper -->
-    <div
-        class="tw:h-[calc(100vh-5rem)] tw:fixed tw:md:right-0 tw:bottom-0 tw:overflow-y-auto tw:w-full tw:md:w-[calc(100vw-10rem)]">
-        <div class="h-full flex flex-col flex-wrap">
 
-            <div class="bg-gray-100 flex-1 p-6">
+    <script>
 
-                <div class="tw:flex tw:flex-col tw:w-full">
-                    <div class="card">
+        let dep = document.getElementById('department');
+        let faculty = document.getElementById('faculty');
 
-                        <div class="card-body">
-                            <div class="flex flex-row justify-between items-center">
-                                <h1 class="font-extrabold text-lg">Uploaded Results</h1>
-                            </div>
 
-                            <table class="table-auto w-full mt-5 text-right">
+        if( faculty && faculty.value.length > 0 ){
 
-                                <thead>
-                                    <tr class="">
-                                        <td class="px-4 py-4 font-extrabold text-sm text-left tw:bg-gray-200">S/N</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Course</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Session</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Semester</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Department</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Faculty</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Level</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Uploaded By</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Upload Date</td>
-                                        <td class="py-4 font-extrabold text-sm text-left tw:bg-gray-200">Action</td>
-                                    </tr>
-                                </thead>
+            window.addEventListener('load', (e) => getDep(faculty.value, dep));
+        }
 
-                                <tbody>
+        
+        if( faculty ){
 
-                                   @forelse ($uploads as $index => $upload)
-                                        <tr class="">
-                                            <td class="px-4 py-4  text-sm text-gray-600 flex flex-row items-center text-left">{{ $index + 1 }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->course_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->session }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->semester }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->department_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->faculty_name }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->level }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->submitted_by }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">{{ $upload->submitted_at }}</td>
-                                            <td class="py-4 text-xs text-gray-600 text-left">
-                                                <a href="{{ route('officials.results.show', ['id' => $upload->result_id]) }}" class="tw:text-blue-500 tw:hover:text-blue-700">
-                                                    <i class="fad fa-eye"></i> View
-                                                </a>
-                                            </td>
-                                        </tr>
-                                   @empty
-                                     
-                                   @endforelse
-                                    
+            faculty.addEventListener('change', (e) => getDep(e.target.value, dep));
+        }
 
-                                   
+        const getDep = async(fac, department) => {
+                res = await fetch("{{ url('/get-departments') }}/"+fac);
+                res = await res.json();
+                department.innerHTML = '';
 
-                                </tbody>
+                res.departments.forEach((dep) => {
+                    let option = document.createElement('option');
+                    option.setAttribute('value', dep.id);
+                    if( dep.id == "{{ old('department') }}" ){
+                        
+                        option.setAttribute('selected', dep.id);
+                    }
+                    let value = document.createTextNode(dep.department_name);
+                    option.appendChild(value);
+                    department.appendChild(option);
+                })
+            }
+        
 
-                            </table>
+            
+        const getResults = async () => {
 
-                        </div>
-                    </div>
-                </div>
+            const session = document.getElementById('session');
+            const semester = document.getElementById('semester');
+            const level = document.getElementById('level');
+            const faculty = document.getElementById('faculty');
+            const department = document.getElementById('department');
+            const course = document.getElementById('course');
 
-            </div>
-        </div>
-    </div>
 
-    <!-- end wrapper -->
+            const req = await fetch(`/admin/get-results?session=${session.value}&semester=${semester.value}&level=${level.value}&faculty=${faculty.value}&department=${department.value}&course=${course.value}`);
 
-    <!-- script -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="{{ asset('/assets/dashboard/js/scripts.js') }}"></script>
-    <!-- end script -->
 
-</body>
+            const res = await req.text();
 
-</html>
+            document.getElementById('results').innerHTML = res;
+
+        }
+
+    </script>
+@endsection

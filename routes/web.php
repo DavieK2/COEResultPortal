@@ -27,5 +27,10 @@ Route::post('/complete-upload', [ResultController::class, 'uploadResult'])->name
 
 
 
-Route::get('/admin/results', [OfficialsResultController::class, 'index'] )->name('officials.results.index')->middleware('auth');
-Route::get('/admin/results/{id}', [OfficialsResultController::class, 'show'] )->name('officials.results.show')->middleware('auth');
+Route::get('/admin/uploads', [OfficialsResultController::class, 'index'] )->name('officials.uploads.index')->middleware('auth');
+Route::get('/admin/uploads/{id}', [OfficialsResultController::class, 'show'] )->name('officials.uploads.show')->middleware('auth');
+
+
+Route::get('/admin/results', [OfficialsResultController::class, 'courseResults'] )->name('officials.results.index')->middleware('auth');
+Route::get('/admin/get-results', [OfficialsResultController::class, 'getCourseResults'] )->name('officials.results.index')->middleware('auth');
+Route::get('/admin/results/view', [OfficialsResultController::class, 'showCourseResults'] )->name('officials.results.show')->middleware('auth');
