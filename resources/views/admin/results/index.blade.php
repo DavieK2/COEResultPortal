@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body tw:w-full tw:overflow-x-auto">
             <div class="tw:shadow-md tw:sm:rounded-lg tw:mt-5 tw:font-sans tw:overflow-x-auto">
-                <div class="tw:flex tw:gap-4 tw:w-full">
+                <div class="tw:lg:flex lg:flex-row tw:flex tw:flex-col tw:gap-4 tw:w-full">
                     <div class="tw:flex tw:flex-col tw:w-full">
                         <label class="tw:mb-3 tw:font-semibold" for="">Select Session</label>
                         <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="session">
@@ -36,7 +36,7 @@
                         </select>
                     </div>
                 </div>
-                 <div class="tw:flex tw:gap-4 tw:w-full mt-5">
+                 <div class="tw:lg:flex lg:flex-row tw:flex tw:flex-col tw:gap-4 tw:w-full mt-5">
                     <div class="tw:flex tw:flex-col tw:w-full">
                         <label class="tw:mb-3 tw:font-semibold" for="">Select Faculty</label>
                         <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="faculty">
