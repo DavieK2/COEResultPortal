@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('course_code');
             $table->integer('faculty_id');
             $table->integer('department_id');
+            $table->integer('level_id');
+            $table->integer('semester_id');
             $table->timestamps();
         });
     }

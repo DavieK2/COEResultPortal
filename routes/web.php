@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Officials\ResultController as OfficialsResultController;
 use App\Http\Controllers\ResultController;
+use App\Models\Course;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,18 @@ Route::get('/get-departments/{faculty_id}', function($faculty_id){
         'departments' => Department::where('faculty_id', $faculty_id)->get()
     ]);
 })->name('get-departments');
+
+
+Route::get('/get-courses', function(){
+    
+    return response()->json([
+        'courses' => Course::where('semester_id', request('semester'))
+                           ->where('faculty_id', request('faculty'))
+                           ->where('department_id', request('department'))
+                           ->where('level_id', request('level'))
+                           ->get()
+    ]);
+})->name('get-course');
 
 
 Route::get('/uploads', [ResultController::class, 'index']  )->name('upload.index')->middleware('auth');

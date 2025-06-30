@@ -142,9 +142,9 @@
                             <label for="course" class="form-label" style="font-size: 1rem; font-weight: 600">Select Course</label>
                             <select class="form-control" x-on:change="selectSession" name="course" id="course">
                                 <option value="">Select Course</option>
-                                @foreach (\App\Models\Course::get() as $course)
+                                {{-- @foreach (\App\Models\Course::get() as $course)
                                     <option @selected( old('course') == $course->id )  value="{{ $course->id }}">{{ $course->course_name}}</option>
-                               @endforeach
+                               @endforeach --}}
                             </select>
                             @error('course')
                                 <div class="mt-2" style="font-size: 12px; color: red">{{ $message }}</div>
@@ -174,8 +174,11 @@
 
     <script>
 
-        let dep = document.getElementById('department');
-        let faculty = document.getElementById('faculty');
+        const dep = document.getElementById('department');
+        const faculty = document.getElementById('faculty');
+        const session = document.getElementById('session');
+        const semester = document.getElementById('semester');
+        const level = document.getElementById('level');
 
 
         if( faculty && faculty.value.length > 0 ){
@@ -190,22 +193,52 @@
         }
 
         const getDep = async(fac, department) => {
-                res = await fetch("{{ url('/get-departments') }}/"+fac);
-                res = await res.json();
-                department.innerHTML = '';
+            res = await fetch("{{ url('/get-departments') }}/"+fac);
+            res = await res.json();
+            department.innerHTML = '';
 
-                res.departments.forEach((dep) => {
-                    let option = document.createElement('option');
-                    option.setAttribute('value', dep.id);
-                    if( dep.id == "{{ old('department') }}" ){
-                        
-                        option.setAttribute('selected', dep.id);
-                    }
-                    let value = document.createTextNode(dep.department_name);
-                    option.appendChild(value);
-                    department.appendChild(option);
-                })
-            }
+            res.departments.forEach((dep) => {
+                let option = document.createElement('option');
+                option.setAttribute('value', dep.id);
+                if( dep.id == "{{ old('department') }}" ){
+                    
+                    option.setAttribute('selected', dep.id);
+                }
+                let value = document.createTextNode(dep.department_name);
+                option.appendChild(value);
+                department.appendChild(option);
+            })
+        }
+
+
+        semester.addEventListener('change', async (e) => await getCourses() );
+        dep.addEventListener('change', async (e) => await getCourses() );
+        level.addEventListener('change', async (e) => await getCourses() );
+        faculty.addEventListener('change', async (e) => await getCourses() );
+
+        
+        const getCourses = async () => {
+
+            const courses = document.getElementById('course');
+
+
+            const req = await fetch(`/get-courses?semester=${semester.value}&level=${level.value}&faculty=${faculty.value}&department=${dep.value}`);
+            const res = await req.json();
+
+            courses.innerHTML = '';
+
+            res.courses.forEach((course) => {
+                let option = document.createElement('option');
+                option.setAttribute('value', course.id);
+                if( course.id == "{{ old('course') }}" ){
+                    
+                    option.setAttribute('selected', course.id);
+                }
+                let value = document.createTextNode(course.course_name);
+                option.appendChild(value);
+                courses.appendChild(option);
+            });
+        }
         
     </script>
   </body>
