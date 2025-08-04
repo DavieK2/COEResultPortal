@@ -234,7 +234,7 @@
                     
                     option.setAttribute('selected', course.id);
                 }
-                let value = document.createTextNode(course.course_name);
+                let value = document.createTextNode(`${course.course_name} [${course.course_code}]`);
                 option.appendChild(value);
                 courses.appendChild(option);
             });

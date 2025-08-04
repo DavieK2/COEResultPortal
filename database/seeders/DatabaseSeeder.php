@@ -2484,112 +2484,112 @@ class DatabaseSeeder extends Seeder
             [
                 "course_name" => "Instructional strategies in English/ French",
                 "course_code" => "AEE/AEF 101",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 1
             ],
             [
                 "course_name" => "Introduction to Arts and Humanities Education",
                 "course_code" => "GAE 101",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 1
             ],
             [
                 "course_name" => "Information Literacy for English Language/Literature in English",
                 "course_code" => "AEE 221",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 2
             ],
             [
                 "course_name" => "Information Literacy for French/Literature in French",
                 "course_code" => "AEF 221",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 2
             ],
             [
                 "course_name" => "Method I: Teaching grammar, lexis and oracy skills",
                 "course_code" => "LAS 244",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 2
             ],
             [
                 "course_name" => "Issues in Arts Education",
                 "course_code" => "AEE 311",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 1,
                 "level_id" => 3
             ],
             [
                 "course_name" => "Communication Skills for French Teachers",
                 "course_code" => "AEF 102",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 1
             ],
             [
                 "course_name" => "Communication Skills for English Teachers",
                 "course_code" => "AEE 102",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 1
             ],
             [
                 "course_name" => "Instructional Materials for French/Literature-in French/Literature",
                 "course_code" => "AEF 202",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 2
             ],
             [
                 "course_name" => "Oral French Pedagogy",
                 "course_code" => "AEF 222",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 2
             ],
             [
                 "course_name" => "Research in Arts Education",
                 "course_code" => "AED 312",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 3
             ],
             [
                 "course_name" => "Theories & Practice of Teaching and Learning in Arts Education",
                 "course_code" => "AED 322",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 3
             ],
             [
                 "course_name" => "Methods of Teaching English/Literature",
                 "course_code" => "AED 332",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 3
             ],
             [
                 "course_name" => "Arts Education Policies in Nigeria",
                 "course_code" => "AED 402",
-                "faculty_id" => 1,
-                "department_id" => 5,
+                "faculty_id" => 2,
+                "department_id" => 6,
                 "semester_id" => 2,
                 "level_id" => 4
             ]
