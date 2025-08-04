@@ -6,6 +6,7 @@ use App\Http\Controllers\ResultController;
 use App\Models\Course;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
+use Spatie\SimpleExcel\SimpleExcelReader;
 
 
 Route::get('/login', fn() => view('auth.login') );
