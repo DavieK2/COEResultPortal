@@ -56,11 +56,7 @@
                     <div class="tw:flex tw:flex-col tw:w-full">
                         <label class="tw:mb-3 tw:font-semibold" for="">Select Course</label>
                         <select class="tw:w-full tw:border tw:border-gray-800 tw:bg-gray-200 py-2 px-3" name="" id="course">
-                            @foreach (\App\Models\Course::get() as $course)
-
-                                <option value="{{ $course->id }}">{{ $course->course_name }}</option>
-                                
-                            @endforeach
+                           <option selected disabled value="">Select Course</option>
                         </select>
                     </div>
                 </div>
@@ -81,9 +77,21 @@
 
     <script>
 
-        let dep = document.getElementById('department');
-        let faculty = document.getElementById('faculty');
+        const dep = document.getElementById('department');
+        const faculty = document.getElementById('faculty');
+        const session = document.getElementById('session');
+        const semester = document.getElementById('semester');
+        const level = document.getElementById('level');
+        
 
+        semester.addEventListener('change', async (e) => await getCourses() );
+        dep.addEventListener('change', async (e) => await getCourses() );
+        level.addEventListener('change', async (e) => await getCourses() );
+        faculty.addEventListener('change', async (e) => await getCourses() );
+
+        if( dep && faculty && session && semester && level ){
+            window.addEventListener('load', async (e) => await getCourses() );
+        }
 
         if( faculty && faculty.value.length > 0 ){
 
@@ -94,6 +102,30 @@
         if( faculty ){
 
             faculty.addEventListener('change', (e) => getDep(e.target.value, dep));
+        }
+
+        
+        const getCourses = async () => {
+
+            const courses = document.getElementById('course');
+
+
+            const req = await fetch(`/get-courses?semester=${semester.value}&level=${level.value}&faculty=${faculty.value}&department=${dep.value}`);
+            const res = await req.json();
+
+            courses.innerHTML = '';
+
+            res.courses.forEach((course) => {
+                let option = document.createElement('option');
+                option.setAttribute('value', course.id);
+                if( course.id == "{{ old('course') }}" ){
+                    
+                    option.setAttribute('selected', course.id);
+                }
+                let value = document.createTextNode(`${course.course_name} [${course.course_code}]`);
+                option.appendChild(value);
+                courses.appendChild(option);
+            });
         }
 
         const getDep = async(fac, department) => {

@@ -6,8 +6,6 @@ use App\Http\Controllers\ResultController;
 use App\Models\Course;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
-use Spatie\SimpleExcel\SimpleExcelReader;
-
 
 Route::get('/login', fn() => view('auth.login') );
 Route::post('/login', [AuthController::class, 'login'] )->name('login');
@@ -32,7 +30,7 @@ Route::get('/get-courses', function(){
 })->name('get-course');
 
 
-Route::get('/uploads', [ResultController::class, 'index']  )->name('upload.index')->middleware('auth');
+Route::get('/uploads', [ResultController::class, 'index'] )->name('upload.index')->middleware('auth');
 Route::get('/upload-result', fn() => view('lecturers.results.upload') )->name('upload')->middleware('auth');
 Route::post('/upload-result', [ResultController::class, 'previewUpload'])->name('preview.upload')->middleware('auth');
 Route::post('/complete-upload', [ResultController::class, 'uploadResult'])->name('results.upload')->middleware('auth');

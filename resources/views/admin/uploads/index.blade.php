@@ -37,7 +37,7 @@
                                 <td class="tw:lg:px-6 tw:px-3 tw:lg:py-4 tw:py-2 ">{{ $upload->submitted_by }}</td>
                                 <td class="tw:lg:px-6 tw:px-3 tw:lg:py-4 tw:py-2 ">{{ $upload->submitted_at }}</td>
                                 <td class="tw:lg:px-6 tw:px-3 tw:lg:py-4 tw:py-2 ">
-                                    <a href="{{ route('officials.results.show', ['id' => $upload->result_id]) }}"
+                                    <a href="{{ route('officials.uploads.show', $upload->result_id) }}"
                                         class="tw:font-medium tw:text-blue-600 tw:dark:text-blue-500 tw:hover:underline">
                                         View
                                     </a>
